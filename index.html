@@ -17,6 +17,17 @@
       const cardData = importedFlashCardDataFile;
 
       class App extends React.Component {
+        constructor() {
+          super();
+          this.state = {
+            cardData: []
+          };
+        }
+
+        componentDidMount() {
+          this.setState({ cardData: cardData });
+        }
+
         render() {
           return (
             <div className='App'>
@@ -27,7 +38,7 @@
                 An interactive flashcard app.
               </p>
               <div className='card-list'>
-                {cardData.map((card, index) => <Card key={index} front={card.front} />)}
+                {this.state.cardData.map((card, index) => <Card key={index} front={card.front} />)}
               </div>
             </div>
           );
